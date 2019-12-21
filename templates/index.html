@@ -16,15 +16,39 @@
                     </div>
                 </div>
                 <div style="padding: 15px;">
-                    <div style="display: inline-block;width: 40%;">Enter Loan Length : </div>
+                    <div style="display: inline-block;width: 40%;">Enter Loan Length(in months) : </div>
                     <div style="display: inline-block;width: 50%;">
                         <input type="text" name="loan-length" id="loan-length" placeholder="Enter tenure" />
                     </div>
                 </div>
                 <div style="padding: 15px">
-                    <div style="display: inline-block;width: 40%;">Enter your Cibil Score : </div>
+                    <div style="display: inline-block;width: 40%;">Enter your Debt to income ratio : </div>
                     <div style="display: inline-block;width: 50%;">
-                        <input type="text" name="cibil-score" id="cibil-score" placeholder="Enter your cibil score" />
+                        <input type="text" name="cibil-score" id="cibil-score" placeholder="Enter debt to income ratio" />
+                    </div>
+                </div>
+                <div style="padding: 15px;">
+                    <div style="display: inline-block;width:40%">Enter Monthly Income : </div>
+                    <div style="width:50%;display: inline-block">
+                        <input type="text" name="monthly-income" id="monthly-income" placeholder="Enter monthly income" />
+                    </div>
+                </div>
+                <div style="padding: 15px;">
+                    <div style="display: inline-block;width: 40%;">Enter FICO Range (300-850) : </div>
+                    <div style="display: inline-block;width: 50%;">
+                        <input type="text" name="fico-range" id="fico-range" placeholder="Enter FICO range" />
+                    </div>
+                </div>
+                <div style="padding: 15px">
+                    <div style="display: inline-block;width: 40%;">Enter Open Credit Lines(e.g - 10,12) : </div>
+                    <div style="display: inline-block;width: 50%;">
+                        <input type="text" name="credit-lines" id="credit-lines" placeholder="Enter Open Credit lines" />
+                    </div>
+                </div>
+                <div style="padding: 15px">
+                    <div style="display: inline-block;width: 40%;">Enter Revolving Credit score balance(eg-14000) : </div>
+                    <div style="display: inline-block;width: 50%;">
+                        <input type="text" name="credit-balance" id="credit-balance" placeholder="Enter revolving Credit balance" />
                     </div>
                 </div>
                 <div style="padding: 15px;">
@@ -44,6 +68,9 @@
                     </div>
                 </div>
             </form>
+        </div>
+        <div style="padding: 20px;font-weight:700 ">
+            {{ prediction }}
         </div>
     </div>
 </body>
