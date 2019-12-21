@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculate interest rate on your loan</title>
+</head>
+<body>
+    <div style="width:50%;margin: 0 auto;">
+        <h1>Calculate interest rate on your loan</h1>
+        <div style="padding: 20px;">
+            <form action="/calculate" method="post">
+                <div style="padding: 15px;">
+                    <div style="display: inline-block;width:40%">Enter Requested Amount : </div>
+                    <div style="width:50%;display: inline-block">
+                        <input type="text" name="requested-amount" id="requested-amount" placeholder="Enter requested amount" />
+                    </div>
+                </div>
+                <div style="padding: 15px;">
+                    <div style="display: inline-block;width: 40%;">Enter Loan Length : </div>
+                    <div style="display: inline-block;width: 50%;">
+                        <input type="text" name="loan-length" id="loan-length" placeholder="Enter tenure" />
+                    </div>
+                </div>
+                <div style="padding: 15px">
+                    <div style="display: inline-block;width: 40%;">Enter your Cibil Score : </div>
+                    <div style="display: inline-block;width: 50%;">
+                        <input type="text" name="cibil-score" id="cibil-score" placeholder="Enter your cibil score" />
+                    </div>
+                </div>
+                <div style="padding: 15px;">
+                    <div style="display: inline-block;width: 40%;">Enter your Home Type : </div>
+                    <div style="display: inline-block;width: 50%;">
+                        <select name="home-type" style="width: 161px;">
+                            <option value="-1">Select Home Type</option>
+                            <option value="1">Rent</option>
+                            <option value="2">Mortgage</option>
+                            <option value="3">Own</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="padding: 15px;">
+                    <div style="margin: 0 auto;width: 45%;">
+                        <input type="submit" value="Calculate" id="requested-amount" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
