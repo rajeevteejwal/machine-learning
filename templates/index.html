@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Calculate interest rate on your loan</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
 </head>
 <body>
     <div style="width:50%;margin: 0 auto;">
-        <h1>Calculate interest rate on your loan</h1>
+        <h2>Calculate interest rate on your loan</h2>
+        <div style="padding: 20px;">
+            <a href="/digit_recognize">Digit Recognition Application</a>
+        </div>
         <div style="padding: 20px;">
             <form action="/calculate" method="post">
                 <div style="padding: 15px;">
