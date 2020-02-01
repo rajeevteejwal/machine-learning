@@ -3,22 +3,27 @@ import pickle
 import numpy as np
 import base64
 from PIL import Image
-from io import BytesIO
-from skimage.io import imsave, imread#, imresize
-from keras.models import load_model
-#import tensorflow as tf
+#from keras.models import load_model
+from tensorflow import keras
 import re
 import io
+#from io import BytesIO
+#from skimage.io import imsave, imread#, imresize
+import tensorflow as tf
+from tensorflow.python.keras.backend import set_session
 #import os
 #import sys
 
 app = Flask(__name__)
-#global cnn_model, graph, model
+global cnn_model, graph, model
+
+tf_config = tf.compat.v1.ConfigProto()
+sess = tf.compat.v1.Session(config=tf_config)
 
 model = pickle.load(open("model.pkl",'rb'))
-
-cnn_model = load_model('model.h5')
-#graph = tf.get_default_graph()
+set_session(sess)
+cnn_model = keras.models.load_model('model.h5')
+graph = tf.compat.v1.get_default_graph()
 
 
 def convertImage(imgData):
@@ -59,11 +64,13 @@ def predict():
     pixels = np.asarray(img, dtype='uint8')
     pixels = np.invert(pixels)
     pixels = np.resize(pixels, (28, 28))
-    x = pixels.reshape(28,28,1)
+    x = pixels.reshape((28,28,1))
     x = np.expand_dims(x, axis=0)
-    out = cnn_model.predict(x)
-    result = np.array_str(np.argmax(out))
-    return str(result)
+    with graph.as_default():
+        set_session(sess)
+        out = cnn_model.predict(x)
+        result = np.argmax(out , axis=1)[0]
+        return str(result)
 
 
 @app.route('/calculate', methods = ['POST'])
