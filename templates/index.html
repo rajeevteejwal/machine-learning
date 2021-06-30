@@ -5,7 +5,7 @@
     <title>Calculate interest rate on your loan</title>
     <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
 </head>
-<body>
+<body style="height:100%;overflow:auto;">
     <div style="width:50%;margin: 0 auto;">
         <h2>Calculate interest rate on your loan</h2>
         <div style="padding: 20px;">
@@ -77,5 +77,41 @@
             {{ prediction }}
         </div>
     </div>
+    <div style="margin: 0 auto;">
+        <video id="video" width="640" height="480" ></video>
+        <button id="snap">Snap Photo</button>
+        <button id="cameraOn"><img src="{{ url_for('static',filename='camera.png') }}"></button>
+        <canvas id="canvas" width="640" height="480"></canvas>
+    </div>
+    <div style="margin: 0 auto;">
+        <img src="{{ url_for('video_feed') }}" />
+    </div>
+<script>
+
+    var video = document.getElementById('video');
+     document.getElementById("cameraOn").addEventListener("click", function() {
+        if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+                //video.src = window.URL.createObjectURL(stream);
+                video.srcObject = stream;
+                video.play();
+            });
+        }
+    });
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    var video = document.getElementById('video');
+
+    // Trigger photo take
+    document.getElementById("snap").addEventListener("click", function() {
+        context.drawImage(video, 0, 0, 640, 480);
+    var request = new XMLHttpRequest();
+    request.open('POST', '/submit?image=' + video.toString('base64'), true);
+    request.send();
+    });
+
+
+
+</script>
 </body>
 </html>
